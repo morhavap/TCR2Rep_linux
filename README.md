@@ -1,37 +1,33 @@
-# TCR2Rep Pipeline (for win64)
+# TCR2Rep Pipeline (for LINUX)
 
 ### Pipeline description :  
 The pipeline processes raw TCR sequences and exports a data table containing all IgBlast annotation, clonal assignment and clonal frequency data (for the 10 biggest clone).
 The pipeline also performs bioinformatic analyses, such as: clonal size distribution ,  CDR3 lengths distribution and VDJ segments frequencies.
 
 ## Installation (manual): 
-1. **Download** and Install the latest version of **Anaconda** from here: 
+1. If need: **Download** and Install the latest version of **Anaconda** for linux from here: 
 
    https://www.anaconda.com/download
 
-2. From the Start menu, search for and **open "Anaconda Prompt"**.
-3. From "Anaconda Prompt" **install git** by typing: 
+3. From linux terminal **install git** by typing: 
 
    ```conda install -c anaconda git```
 
-4. From "Anaconda Prompt" **download TCR2Rep pipeline** scripts by typing: 
+4. **Download TCR2Rep pipeline** scripts by typing: 
 
-   ```git clone https://github.com/morhavap/TCR2Rep_win64.git```
+   ```git clone https://github.com/morhavap/TCR2Rep.git```
 
-5. Get into "TCR2Rep_win64" folder: ```cd TCR2Rep_win64```
-6. Create the **environment for TCR2Rep** in "Anaconda Prompt" by typing:	
+5. Get into "TCR2Rep" folder:
+
+   ```cd TCR2Rep```
+
+8. Create the **environment for TCR2Rep** in "Anaconda Prompt" by typing:	
 
    ```conda env create -f TCR2Rep.yml ```
 
-7. Then opreate the enviroment:
+7. Then opreate TCR2Rep enviroment:
 
-   ```conda activate TCR2Rep```
-
-8. Run this commands at "Anaconda Prompt":
-   
-   -	Add bash cmd environment:
-
-    ```conda install m2-base``` 
+   ```conda activate TCR2Rep``` 
 
    - Add PERL cmd environment:
 
@@ -41,32 +37,32 @@ The pipeline also performs bioinformatic analyses, such as: clonal size distribu
 
     ```conda install -c derkevinriehl seqkit```
 
-9. download and **install IGBlast** for windows from here: 
+9. download and **install IGBlast** for linux from here: 
 
    https://ncbi.github.io/igblast/cook/How-to-set-up.html
 
-   (Important - Save your IgBlast download directory. 
-
-   This is usually saved under a folder "C:\Program Files\NCBI")
+   (Important - Save your IgBlast download directory.)
 
    Move "igblast-1.21.0 " folder into "TCR2Rep" folder.
 
-   (you can find "TCR2Rep" path by typing: "pwd" in "Anaconda Prompt").
+   (you can find "TCR2Rep" path by typing: "pwd").
 
 10. Download **Imgt database**: (You can get a more extensive explanation here - https://www.imgt.org/vquest/refseqh.html#VQUEST.)
      
-     a.	At "igblast-1.21.0 " folder create new folder with the name – "database" by typing:
+       a.	At "igblast-1.21.0 " folder create new folder with the name – "database" by typing:
       
       ```mkdir database```
       
       ```cd databas```
    
-     b.	Create 3 new txt file at "database" folder. (right button -> new -> text document)
+       b.	Create 3 new txt file at "database" folder. (right button -> new -> text document)
         Save the files with this names: "Human_TRV","Human_TRD","Human_TRJ".
      
-     c.	Go here - https://www.imgt.org/vquest/refseqh.html#VQUEST, and copy all Human v genes of TCR (i.e. -  TRAV, TRBV, TRGV, TRDV) into "Human_TRV" file (one after the other), all D genes of TCR into " Human_TRD" file and all J genes of TCR into "Human_TRJ" file. 
+       c.	Go here - https://www.imgt.org/vquest/refseqh.html#VQUEST, and copy all Human v genes of TCR (i.e. -  TRAV, TRBV, TRGV, TRDV) into "Human_TRV" file (one after the other), all D genes of TCR into " Human_TRD" file and all J genes of TCR into "Human_TRJ" file. 
     
-    d.	Now, run this commands for each file to filter out duplicate sequences and prepare the files to igblast: (change just the gene segment V\D\J in the filename)
+       d. Now, run this commands for each file to filter out duplicate sequences and prepare the files to igblast: 
+        
+        (change just the gene segment V\D\J in the filename)
        
        ```seqkit rmdup -s < Human_TRV > human_TRV_filtered```
        
@@ -78,9 +74,9 @@ The pipeline also performs bioinformatic analyses, such as: clonal size distribu
 
 ## **Run TCR2Rep pip** 
 
-Typing at "Anaconda Prompt":
+Operate TCR2Rep pip enviroment:
 
-```cd TCR2Rep_win64```
+```cd TCR2Rep```
 
 ```conda activate TCR2Rep```
 
@@ -99,7 +95,7 @@ Typing at "Anaconda Prompt":
 
 **Run Example:**
 
-```bash "TCR2Rep_pipeline_[win64].bash" AL11_S1_L001_R1_001.fastq AL11 240 25 C:\Users\user\TCR2Rep_win64\ C:\Users\user\TCR2Rep_win64\NCBI\igblast-1.21.0\bin\igblastn.exe C:\Users\user\TCR2Rep_win64\NCBI\igblast-1.21.0 C:\Users\user\TCR2Rep_win64```
+```bash "TCR2Rep_pipeline_[win64].bash" AL11_S1_L001_R1_001.fastq AL11 240 25 ~\TCR2Rep\ <your/igblastn_direcrory/path>\bin\igblastn.exe <your/igblastn_direcrory/path> <your/tcR2Rep_pipeline_folder/path>```
 
 
 
